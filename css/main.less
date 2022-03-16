@@ -1,0 +1,837 @@
+@import "vars";
+@import "mixins";
+
+@font-face {
+  font-family: 'Helvetica Neue Light';
+  src: local('Helvetica Neue Light'), local('Helvetica-Neue-Light'),
+  url('../fonts/HelveticaNeueCyr-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue Bold';
+  src: local('Helvetica Neue Bold'), local('Helvetica-Neue-Bold'),
+  url('../fonts/HelveticaNeueCyr-Bold.ttf') format('truetype');
+  font-style: normal;
+}
+
+//slider-menu-styles
+
+.slick-initialized .slick-slide {
+  .flex-display();
+  width: 1381px;
+  margin: 85px 403px 0;
+  height: 498px;
+}
+
+.slick-list.draggable {
+  height: 599px;
+}
+
+.slider {
+  .relative();
+  height: 581px;
+}
+
+.slick-prev {
+  display: none !important;
+}
+
+.slick-next {
+  .relative();
+  height: 114px;
+  width: 60px;
+  top: -286px;
+  left: 92.5%;
+
+  &::before {
+    content: "";
+    .absolute();
+    background: url("@{img-main}right-arrow.png") no-repeat;
+    height: 114px;
+    width: 60px;
+    top: 0;
+    right: 0;
+    .opacity(1);
+  }
+}
+
+.slick-dots {
+  .relative();
+  .center-content();
+  .flex-display();
+  width: 128px;
+  bottom: 141px;
+  list-style-type: none;
+
+  & li:not(:last-of-type){
+    margin-right: 9px;
+  }
+
+  li {
+    width: 18px;
+    height: 18px;
+    .border-radius (50%);
+    background-color: @secondary-color;
+
+    button {
+      color: @secondary-color;
+
+      &::before {
+        content: "";
+      }
+    }
+  }
+}
+
+li.slick-active {
+  background-color: @primary-color;
+
+  button {
+    color: @primary-color;
+  }
+}
+
+//page-styles
+html, body {
+  .full-width();
+  font-family: Helvetica Neue Light, serif;
+  margin: 0;
+  padding: 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.content-wrapper {
+  width: @content-wrapper-width;
+  .center-content();
+}
+
+.uppercase-text {
+  text-transform: uppercase;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+//header-styles
+
+.header {
+  height: @header-height;
+  background: url("@{img-header}header-background.png") 100%/cover no-repeat;
+}
+
+.upper-header, .nav-menu, .map-menu, .categories {
+  .flex-display();
+}
+
+.upper-header {
+  height: @upper-header-height;
+  .justify-content(space-between);
+  .align-items(center);
+}
+
+.logo {
+  .relative();
+  top: 16px;
+}
+
+.logo-img{
+  width: 100%;
+}
+
+.burger-menu {
+  display: none;
+  .absolute();
+  width: 133px;
+  height: 133px;
+  top: 0;
+  right: 0;
+}
+
+.line-container{
+  width: 61px;
+  margin: 47px auto;
+}
+
+.burger-line {
+  width: 64px;
+  height: 8px;
+  margin-bottom: 9.5px;
+  border-radius: 17px;
+  background-color: @primary-color;
+}
+
+.popup-burger{
+  background-color: @primary-color;
+}
+
+.popup-burger-line{
+  background-color: rgb(255, 255, 255);
+}
+
+.hide-menu{
+  display: none;
+}
+
+.show-menu{
+  display: block;
+}
+
+.popup-menu{
+  .absolute();
+  .full-width();
+  z-index: 1;
+  top: 136px;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(255, 255, 255);
+
+  & li:not(:last-of-type){
+    margin-bottom: 2px;
+  }
+
+  li{
+    list-style-type: none;
+    background-color: @primary-color;
+    color: rgb(255, 255, 255);
+    height: 130px;
+    line-height: 140px;
+    padding-left: 75px;
+    font-size: 41px;
+  }
+}
+
+.nav-menu, .map-menu, .categories {
+  .ul-reset();
+}
+
+.nav-menu {
+  height: 48px;
+
+  li {
+    font-size: 14px;
+    color: @primary-color;
+    line-height: 86px;
+
+    &:not(:last-of-type) {
+      margin-right: 32px;
+    }
+
+    &:first-of-type, &:nth-of-type(2) {
+      letter-spacing: 0.2px;
+    }
+  }
+}
+
+.login {
+  .bold();
+}
+
+.world-map {
+  .relative();
+  .center-content();
+  padding-top: 40px;
+  width: 758px;
+
+  &::before, &::after {
+    .pseudo-elem();
+    top: 8px;
+  }
+
+  &::before {
+    background: url("@{img-header}left-arc.png") no-repeat center;
+    left: 0;
+  }
+
+  &::after {
+    background: url("@{img-header}right-arc.png") no-repeat center;
+    right: 0;
+  }
+}
+
+.map-container {
+  width: 647px;
+  .center-content();
+  .relative();
+}
+
+.red-point {
+  .absolute();
+  left: 107px;
+  bottom: 208px;
+}
+
+.map-menu {
+  .justify-content(center);
+  margin-top: 6px;
+
+  & li {
+    .uppercase-text();
+    padding-bottom: 2px;
+    font-size: 19px;
+    color: @ecosystem-color;
+    letter-spacing: 0.8px;
+    line-height: 22px;
+    .margin-reset();
+  }
+
+  & li:not(:last-of-type) {
+    margin-right: 52px;
+  }
+
+  & li:hover, & li:active {
+    border-bottom: 2px solid;
+    padding-bottom: 0px;
+    font-weight: bold;
+  }
+}
+
+.map {
+  width: 638px;
+}
+
+.categories {
+  .justify-content(center);
+  padding-top: 32px;
+
+  & li:not(:last-of-type) {
+    margin-right: 151px;
+  }
+}
+
+.owners {
+  display: inline-block;
+  width: 130px;
+  padding-left: 10px;
+  letter-spacing: -0.7px;
+  color: @owners-color;
+  line-height: 19px;
+}
+
+.ecosystem, .large-logistics, .sme-logistics {
+  line-height: 21px;
+  letter-spacing: 0.5px;
+}
+
+.ecosystem {
+  width: 146px;
+  color: @ecosystem-color;
+}
+
+.large-logistics {
+  margin-left: -8px;
+  color: @large-logistics-color;
+  width: 161px;
+}
+
+.sme-logistics {
+  width: 140px;
+  color: @sme-logistics-color;
+}
+
+.categories-link {
+  .flex-display();
+  .flex-direction(column);
+  width: 138px;
+}
+
+.categories-img {
+  width: 138px;
+}
+
+.categories-text, .main-text-header, .main-text {
+  text-align: center;
+}
+
+.categories-text {
+  display: inline-block;
+  font-family: "Arial", serif;
+  font-size: 17px;
+  padding-top: 3px;
+}
+
+.arrow {
+  width: 47px;
+  margin: 29px auto 0;
+}
+
+//main-styles
+.about {
+  background: url("@{img-main}about-bg.png") 100% 100%/cover no-repeat;
+}
+
+.main-content {
+  height: 780px;
+}
+
+.main-header-wrapper {
+  background-color: @primary-color;
+}
+
+.main-text-header {
+  font-size: 23px;
+  color: rgb(255, 255, 255);
+  line-height: 100px;
+  letter-spacing: 0.4px;
+  height: 98px;
+}
+
+.main-text {
+  font-size: 20px;
+  color: @primary-color;
+  line-height: 2em;
+
+  p {
+    .margin-reset();
+    letter-spacing: 0.37px;
+  }
+}
+
+.main-text-about {
+  height: 440px;
+  margin: 100px 0 79px 0;
+}
+
+.text-mobile{
+  display: none;
+}
+
+.business-wrapper {
+  height: 513px;
+  margin-bottom: 42px;
+}
+
+.business-content {
+  background: url("@{img-main}business-bg.png") 100% 100%/cover no-repeat;
+}
+
+.business, .tech {
+  .flex-display();
+  .justify-content(center);
+}
+
+.business {
+  margin-top: 64px;
+}
+
+.business-text {
+  flex-basis: 662px;
+}
+
+.business-text, .tech-text, .main-text-h2, .company-text {
+  text-align: left;
+}
+
+.business-text {
+  p {
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: -0.4px;
+  }
+}
+
+.business-text {
+
+  p:first-of-type {
+    margin-bottom: 29px;
+  }
+}
+
+.main-text-h2 {
+  margin: 0 0 24px 0;
+  font-weight: normal;
+  letter-spacing: 0.9px;
+}
+
+.business-framework {
+  .relative();
+  width: 694px;
+
+  & > * {
+    .absolute();
+  }
+
+  p {
+    .margin-reset();
+    width: 200px;
+    font-size: 14px;
+    color: rgb(45, 171, 226);
+    line-height: 1.2;
+  }
+}
+
+.business-img {
+  top: 181px;
+  left: 92px;
+}
+
+.shape1 {
+  top: 320px;
+  left: 104px;
+}
+
+.shape2 {
+  top: 120px;
+  left: 285px;
+}
+
+.shape3 {
+  top: 316px;
+  left: 502px;
+}
+
+.business-p {
+
+  p:first-of-type {
+    text-indent: -4px;
+    letter-spacing: 0.2px;
+  }
+
+  p:nth-of-type(2) {
+    text-indent: -10px;
+    letter-spacing: 0.3px;
+  }
+
+  p:last-of-type {
+    margin-left: 16px;
+    text-indent: -16px;
+    letter-spacing: 0.2px;
+  }
+}
+
+.business-p1 {
+  top: 417px;
+  left: 49px;
+  letter-spacing: 0.3px;
+}
+
+.business-p2 {
+  top: 35px;
+  left: 119px;
+
+  p:first-of-type {
+    letter-spacing: 0.2px;
+  }
+
+  p:nth-of-type(2) {
+    letter-spacing: 0.3px;
+  }
+}
+
+.business-p3 {
+  top: 404px;
+  left: 505px;
+}
+
+.tech-content {
+  height: 778px;
+}
+
+.tech-wrapper {
+    width: 95.6%;
+}
+
+.tech {
+  position: relative;
+  margin-top: 86px;
+}
+
+.tech-framework {
+  margin-left: 6px;
+}
+
+.tech-text {
+  margin: 0 106px 0 48px;
+
+  p {
+    font-size: 23px;
+    line-height: 28px;
+    letter-spacing: 0;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+}
+
+.owners-content {
+  background: url("@{img-main}owners-bg.png") 100% 100%/cover no-repeat;
+}
+
+.owners-wrapper.company-wrapper{
+  height: 443px;
+}
+
+.freight-owners {
+  background-color: @owners-color;
+}
+
+.company-header{
+  display: none;
+}
+
+.company-wrapper {
+  .flex-display();
+  width: 89%;
+  height: 434px;
+  margin-top: 144px;
+}
+
+.company-img {
+  .relative();
+  width: 403px;
+  height: 349px;
+}
+
+.company-img1, .company-img2 {
+  .absolute();
+}
+
+.owners-img2 {
+  top: 19%;
+  left: 15%;
+}
+
+.company-text {
+  flex-basis: 61%;
+
+  p {
+    letter-spacing: -0.5px;
+    margin-bottom: 25px;
+    font-size: 24px;
+    line-height: 29px;
+  }
+}
+
+.owners-text {
+  margin: -13px 0 0 31px;
+  color: @owners-color;
+}
+
+.more-btn {
+  width: 140px;
+  height: 35px;
+  margin-bottom: 15px;
+  .relative();
+  top: 16px;
+  left: 94.5%;
+  border: none;
+  border-radius: 2%;
+  font-size: 14px;
+  color: white;
+  background-color: rgb(77, 145, 182);
+}
+
+.large-companies-content {
+  background: url("@{img-main}large-bg.png") 100% 100%/cover no-repeat;
+}
+
+.large-companies {
+  background-color: @ecosystem-color;
+}
+
+.large-companies-text {
+  margin: -17px 0 0 32px;
+  color: rgb(42, 120, 151);
+
+  p {
+    margin-bottom: 31px;
+    line-height: 27px;
+  }
+
+  p:last-of-type {
+    letter-spacing: 0;
+  }
+
+  .more-btn {
+    top: 7px;
+    left: 93.7%;
+    margin-bottom: 8px;
+  }
+}
+
+.large-companies-img1 {
+  bottom: 5px;
+  right: 6px;
+}
+
+.large-companies-img2 {
+  bottom: 85px;
+  right: 110px;
+}
+
+.logistics-content {
+  background: url("@{img-main}logistics-bg.png") 100% 100%/cover no-repeat;
+}
+
+.logistics-companies {
+  background-color: @large-logistics-color;
+}
+
+.logistics-companies-text, .sme-text {
+  flex-basis: 66%;
+}
+
+.logistics-companies-text {
+  color: @large-logistics-color;
+  margin: -6px 0 0 32px;
+
+  p {
+    margin-bottom: 30px;
+    line-height: 27px;
+  }
+
+  .more-btn {
+    top: 15px;
+    left: 87.5%;
+    margin-bottom: 2px;
+  }
+}
+
+.logistics-companies-img1 {
+  top: 2px;
+  right: 5px;
+}
+
+.logistics-companies-img2 {
+  bottom: 82px;
+  right: 117px;;
+}
+
+.sme-content {
+  background: url("@{img-main}sme-bg.png") 100% 100%/cover no-repeat;
+}
+
+.sme-companies {
+  background-color: @sme-logistics-color;
+}
+
+.sme-text {
+  color: rgb(88, 89, 91);
+  margin: -7px 0 0 32px;
+
+  p {
+    margin-bottom: 30px;
+    line-height: 27px;
+  }
+
+  .more-btn {
+    top: -24px;
+    left: 87%;
+  }
+}
+
+.sme-img1 {
+  top: 1px;
+  right: 10px;
+}
+
+.sme-img2 {
+  bottom: 74px;
+  right: 75px;
+}
+
+//footer-styles
+.footer {
+  background-color: @primary-color;
+}
+
+.contact-header {
+  line-height: 110px;
+  height: 99px;
+}
+
+.contact-map {
+  width: 100%;
+  height: 392px;
+}
+
+.footer-logo {
+  .relative();
+  .center-content();
+  top: -83px;
+  left: -4px;
+  width: 131px;
+  height: 131px;
+  background-color: white;
+  .border-radius(50%);
+
+  img {
+    .absolute();
+    top: 5px;
+    left: 3px;
+  }
+}
+
+.contacts {
+  .relative();
+  width: 901px;
+  height: 173px;
+  bottom: 49px;
+  .center-content();
+}
+
+.contacts-wrapper, .details, .links {
+  .flex-display();
+}
+
+.contacts-container{
+  .relative();
+}
+
+.contacts-wrapper {
+  .absolute();
+  .justify-content(space-between);
+  width: 901px;
+  left: 24.2%;
+  top: 2px;
+  font-size: 24px;
+  color: rgb(255, 255, 255);
+}
+
+.details, .links {
+  .relative();
+}
+
+.details {
+  .flex-direction(column);
+  .align-items(center);
+  font-size: 23px;
+  letter-spacing: 0.4px;
+
+  div{
+    line-height: 28px;
+  }
+
+  div:nth-of-type(2){
+    margin-left: -2px;
+    letter-spacing: 0.2px;
+  }
+}
+
+.tel{
+  margin: 30.5px 0 30px 5px;
+  letter-spacing: 0.2px;
+}
+
+.links{
+  .align-items(flex-end);
+  top: 10px;
+
+  a:first-of-type{
+    margin-right: 44px;
+  }
+
+  a:nth-of-type(2){
+    margin-right: 36px;
+  }
+}
