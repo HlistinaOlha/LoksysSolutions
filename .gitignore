@@ -1,6 +1,3 @@
 node_modules
-dist
 .cache
 .idea
-*.css
-!normalize.css
